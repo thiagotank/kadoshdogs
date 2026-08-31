@@ -22,7 +22,7 @@ get_header();
                     <article <?php post_class('dog-card'); ?>>
                         <?php if (has_post_thumbnail()) : ?>
                             <a class="dog-card__image" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr(sprintf(__('Conheça %s', 'kadoshdogs'), get_the_title())); ?>">
-                                <?php the_post_thumbnail('dog-card', ['loading' => 'lazy']); ?>
+                                <?php the_post_thumbnail('large', ['loading' => 'lazy']); ?>
                             </a>
                         <?php endif; ?>
                         <div class="dog-card__content">
