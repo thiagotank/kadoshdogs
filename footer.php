@@ -3,7 +3,7 @@
 <footer class="site-footer">
     <div class="site-container">
         <p>
-            © <?php echo date('Y'); ?> Kadosh Dogs.
+            © <?php echo esc_html(wp_date('Y')); ?> Kadosh Dogs.
             Todos os direitos reservados.
         </p>
     </div>

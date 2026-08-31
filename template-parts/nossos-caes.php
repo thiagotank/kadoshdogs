@@ -46,6 +46,7 @@ if (!$dogs->have_posts()) {
                         <a
                             href="<?php the_permalink(); ?>"
                             class="dog-card__image"
+                            aria-label="<?php echo esc_attr(sprintf(__('Conheça %s', 'kadoshdogs'), get_the_title())); ?>"
                         >
                             <?php
                             the_post_thumbnail(
@@ -63,7 +64,7 @@ if (!$dogs->have_posts()) {
                     <div class="dog-card__content">
 
                         <h3 class="dog-card__title">
-                            <?php the_title(); ?>
+                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         </h3>
 
                         <?php if (has_excerpt()) : ?>

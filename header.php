@@ -19,7 +19,7 @@
             KADOSH DOGS
         </a>
 
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="<?php esc_attr_e('Navegação principal', 'kadoshdogs'); ?>">
             <?php
             wp_nav_menu([
                 'theme_location' => 'primary',
@@ -32,4 +32,4 @@
     </div>
 </header>
 
-<main>
+<main id="main-content" class="site-main">
