@@ -401,54 +401,15 @@ a {
    NOSSOS CÃES
 ========================================================= */
 
-.dogs {
-    padding: 80px 0;
-    background: #faf9f6;
-}
-
-.dogs__heading {
-    max-width: 760px;
-    margin: 0 auto 40px;
-    text-align: center;
-}
-
-.dogs__eyebrow {
-    margin: 0 0 10px;
-
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-
-    color: var(--color-accent);
-}
-
-.dogs__title {
-    margin: 0;
-
-    font-size: 38px;
-    line-height: 1.15;
-}
-
-.dogs__description {
-    max-width: 680px;
-
-    margin: 16px auto 0;
-
-    font-size: 15px;
-    line-height: 1.6;
-
-    color: var(--color-muted);
-}
-
 .dogs__grid {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
+    align-items: stretch;
 }
 
 .dog-card {
+    min-width: 0;
     overflow: hidden;
 
     background: #fff;
@@ -459,18 +420,19 @@ a {
 
 .dog-card__image {
     display: block;
-
     width: 100%;
+    height: 280px;
     overflow: hidden;
 }
 
 .dog-card__image img {
+    display: block;
+
     width: 100%;
-    height: 360px;
+    height: 100%;
 
     object-fit: cover;
-
-    display: block;
+    object-position: center;
 }
 
 .dog-card__content {
@@ -479,66 +441,37 @@ a {
 
 .dog-card__title {
     margin: 0;
-
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.2;
 }
 
 .dog-card__description {
     margin: 8px 0 0;
 
-    font-size: 14px;
-
     color: var(--color-muted);
-}
-
-.dogs__footer {
-    margin-top: 32px;
-
-    text-align: center;
-}
-
-.dogs__link {
-    display: inline-block;
-
-    padding: 12px 20px;
 
     font-size: 14px;
-    font-weight: 700;
-
-    border: 1px solid var(--color-text);
-    border-radius: 4px;
+    line-height: 1.5;
 }
 
-.dogs__link:hover {
-    background: var(--color-text);
-    color: #fff;
-}
-
+/* Tablet */
 @media (max-width: 900px) {
+    .dogs__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
+    .dog-card__image {
+        height: 300px;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
     .dogs__grid {
         grid-template-columns: 1fr;
     }
 
-    .dog-card__image img {
-        height: 420px;
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    .dogs {
-        padding: 56px 0;
-    }
-
-    .dogs__title {
-        font-size: 30px;
-    }
-
-    .dog-card__image img {
+    .dog-card__image {
         height: 320px;
     }
-
 }
