@@ -30,6 +30,9 @@ function kadoshdogs_setup()
     register_nav_menus([
         'primary' => __('Menu Principal', 'kadoshdogs'),
     ]);
+
+    // Tamanho de imagem para os cards de cães (crop hard)
+    add_image_size('dog-card', 1200, 800, true);
 }
 
 add_action('after_setup_theme', 'kadoshdogs_setup');

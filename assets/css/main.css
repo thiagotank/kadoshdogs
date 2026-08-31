@@ -398,6 +398,132 @@ a {
 }
 
 /* =========================================================
+   Nossos Cães
+========================================================= */
+
+.dogs {
+    padding: 72px 0;
+    background: var(--color-background);
+}
+
+.dogs__heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.dogs__eyebrow {
+    margin: 0 0 12px;
+    color: var(--color-accent);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.dogs__title {
+    margin: 0 0 12px;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.dogs__description {
+    margin: 0 auto;
+    max-width: 760px;
+    color: var(--color-muted);
+    font-size: 15px;
+}
+
+.dogs__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.dog-card {
+    background: var(--color-white);
+    border: 1px solid #eee;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dog-card__image {
+    display: block;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.dog-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dog-card__content {
+    padding: 16px;
+}
+
+.dog-card__title {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.dog-card__description {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+.dogs__footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.dogs__link {
+    color: var(--color-text);
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+.dogs__link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+
+    .dogs__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dog-card__image {
+        height: 220px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .dogs__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dog-card__image {
+        height: 180px;
+    }
+
+    .dogs {
+        padding: 56px 0;
+    }
+
+}
+
+/* ========================================================= */
+
    NOSSOS CÃES
 ========================================================= */
 
