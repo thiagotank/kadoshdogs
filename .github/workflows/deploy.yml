@@ -1,0 +1,45 @@
+name: Deploy theme to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: hostinger-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          SSH_PORT: ${{ vars.HOSTINGER_SSH_PORT || '65002' }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/hostinger
+          chmod 600 ~/.ssh/hostinger
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Deploy theme
+        env:
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          SSH_PORT: ${{ vars.HOSTINGER_SSH_PORT || '65002' }}
+          REMOTE_PATH: ${{ vars.HOSTINGER_THEME_PATH || 'public_html/wp-content/themes/kadoshdogs/' }}
+        run: |
+          rsync -az --checksum \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='README.md' \
+            -e "ssh -i ~/.ssh/hostinger -p $SSH_PORT" \
+            ./ "$SSH_USER@$SSH_HOST:$REMOTE_PATH"
