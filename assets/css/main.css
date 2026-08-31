@@ -396,3 +396,139 @@ a {
     }
 
 }
+
+/* =========================================================
+   Nossos cães
+========================================================= */
+
+.dogs {
+    padding: 88px 0;
+    background: #faf9f6;
+}
+
+.dogs__heading {
+    max-width: 760px;
+    margin: 0 auto 48px;
+
+    text-align: center;
+}
+
+.dogs__eyebrow {
+    margin: 0 0 12px;
+
+    color: var(--color-accent);
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.dogs__title {
+    margin: 0;
+
+    font-size: clamp(32px, 4vw, 46px);
+    line-height: 1.15;
+}
+
+.dogs__description {
+    margin: 18px auto 0;
+
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.dogs__grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+.dog-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #ece6e7;
+    border-radius: 16px;
+}
+
+.dog-card__image {
+    display: block;
+    overflow: hidden;
+}
+
+.dog-card__image img {
+    width: 100%;
+    height: 420px;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+.dog-card:hover .dog-card__image img {
+    transform: scale(1.025);
+}
+
+.dog-card__content {
+    padding: 20px 22px 24px;
+}
+
+.dog-card__title {
+    margin: 0;
+
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.dog-card__description {
+    margin: 8px 0 0;
+
+    color: var(--color-muted);
+
+    font-size: 14px;
+}
+
+.dogs__footer {
+    margin-top: 36px;
+
+    text-align: center;
+}
+
+.dogs__link {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.dogs__link:hover {
+    color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+
+    .dogs__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dog-card__image img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .dogs {
+        padding: 56px 0;
+    }
+
+    .dogs__heading {
+        margin-bottom: 32px;
+    }
+
+}

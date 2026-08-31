@@ -2,7 +2,14 @@
 
 get_header();
 
-get_template_part('template-parts/hero');
-get_template_part('template-parts/diferenciais');
+if (have_posts()) {
+    while (have_posts()) {
+        the_post();
+
+        get_template_part('template-parts/hero');
+        get_template_part('template-parts/diferenciais');
+        get_template_part('template-parts/nossos-caes');
+    }
+}
 
 get_footer();
