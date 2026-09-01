@@ -50,7 +50,7 @@ if (!$dogs->have_posts()) {
                         >
                             <?php
                             the_post_thumbnail(
-                                'large',
+                                'full',
                                 [
                                     'loading' => 'lazy',
                                     'alt'     => esc_attr(get_the_title()),
