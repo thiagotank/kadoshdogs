@@ -1037,7 +1037,7 @@ button:focus-visible {
 ========================================================= */
 
 .site-footer {
-    padding: 72px 0 0;
+    padding: 52px 0 0;
 
     background: #222222;
     color: #ffffff;
@@ -1049,7 +1049,7 @@ button:focus-visible {
 
     gap: 72px;
 
-    padding-bottom: 56px;
+    padding-bottom: 44px;
 }
 
 .site-footer__brand {
