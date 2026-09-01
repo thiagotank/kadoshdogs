@@ -1031,3 +1031,184 @@ button:focus-visible {
         height: 26px;
     }
 }
+
+/* =========================================================
+   Footer
+========================================================= */
+
+.site-footer {
+    padding: 72px 0 0;
+
+    background: #222222;
+    color: #ffffff;
+}
+
+.site-footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 72px;
+
+    padding-bottom: 56px;
+}
+
+.site-footer__brand {
+    max-width: 400px;
+}
+
+.site-footer__logo {
+    display: inline-block;
+
+    margin-bottom: 4px;
+
+    color: #ffffff;
+
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.site-footer__logo:hover {
+    color: #ffffff;
+}
+
+.site-footer__breed {
+    margin: 0 0 24px;
+
+    color: #b79ba1;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.site-footer__description {
+    max-width: 360px;
+
+    margin: 0 0 20px;
+
+    color: #c9c4c5;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.site-footer__location {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.site-footer__title {
+    margin: 0 0 20px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.site-footer__menu {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.site-footer__menu li {
+    margin-bottom: 12px;
+}
+
+.site-footer__menu a {
+    color: #c9c4c5;
+
+    font-size: 14px;
+
+    transition: color 0.2s ease;
+}
+
+.site-footer__menu a:hover {
+    color: #ffffff;
+}
+
+.site-footer__bottom {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    color: #918b8d;
+
+    font-size: 12px;
+}
+
+.site-footer__bottom p {
+    margin: 0;
+}
+
+.site-footer__signature {
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   Footer responsivo
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-footer {
+        padding-top: 56px;
+    }
+
+    .site-footer__grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 48px;
+    }
+
+    .site-footer__brand {
+        grid-column: 1 / -1;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding-top: 48px;
+    }
+
+    .site-footer__grid {
+        grid-template-columns: 1fr;
+
+        gap: 36px;
+
+        padding-bottom: 40px;
+    }
+
+    .site-footer__brand {
+        grid-column: auto;
+    }
+
+    .site-footer__bottom {
+        min-height: auto;
+
+        padding: 24px 0;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+}
