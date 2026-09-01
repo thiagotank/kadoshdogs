@@ -2,11 +2,11 @@
 
     <div class="site-container story__container">
 
-        <div class="story__image">
-            <div class="story__placeholder">
-                Adicione uma foto da Kadosh Dogs
-            </div>
-        </div>
+        <img
+           src="https://indigo-ostrich-593851.hostingersite.com/wp-content/uploads/2026/09/WhatsApp-Image-2023-04-23-at-21.18.38-3.jpeg"
+             alt="Kadosh Dogs - Nossa História"
+             loading="lazy"
+        >
 
         <div class="story__content">
 
