@@ -24,8 +24,10 @@
 
             <article class="feature-card">
 
-                <div class="feature-card__icon">
-                    ♢
+                <div class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"></path>
+                    </svg>
                 </div>
 
                 <h3 class="feature-card__title">
@@ -39,11 +41,12 @@
 
             </article>
 
-
             <article class="feature-card">
 
-                <div class="feature-card__icon">
-                    ♥
+                <div class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
+                    </svg>
                 </div>
 
                 <h3 class="feature-card__title">
@@ -57,11 +60,13 @@
 
             </article>
 
-
             <article class="feature-card">
 
-                <div class="feature-card__icon">
-                    ◉
+                <div class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="5"></circle>
+                        <path d="M9 13.5 8 21l4-2 4 2-1-7.5"></path>
+                    </svg>
                 </div>
 
                 <h3 class="feature-card__title">
