@@ -171,3 +171,285 @@ function kadoshdogs_register_dogs_post_type()
 }
 
 add_action('init', 'kadoshdogs_register_dogs_post_type');
+
+
+/**
+ * =========================================================
+ * FOTOS DO INSTAGRAM - HOME
+ * =========================================================
+ */
+
+function kadoshdogs_instagram_meta_box()
+{
+    add_meta_box(
+        'kadoshdogs_instagram',
+        'Fotos do Instagram',
+        'kadoshdogs_instagram_meta_box_html',
+        'page',
+        'normal',
+        'default'
+    );
+}
+
+add_action('add_meta_boxes', 'kadoshdogs_instagram_meta_box');
+
+
+function kadoshdogs_instagram_meta_box_html($post)
+{
+    wp_nonce_field(
+        'kadoshdogs_save_instagram_images',
+        'kadoshdogs_instagram_nonce'
+    );
+
+    for ($i = 1; $i <= 4; $i++) {
+
+        $meta_key = '_kadoshdogs_instagram_' . $i;
+
+        $image_id = (int) get_post_meta(
+            $post->ID,
+            $meta_key,
+            true
+        );
+
+        $image_url = $image_id
+            ? wp_get_attachment_image_url($image_id, 'medium')
+            : '';
+        ?>
+
+        <div
+            class="kadoshdogs-instagram-field"
+            style="
+                margin-bottom: 24px;
+                padding-bottom: 24px;
+                border-bottom: 1px solid #ddd;
+            "
+        >
+
+            <strong>
+                Foto <?php echo esc_html($i); ?>
+            </strong>
+
+            <div style="margin: 12px 0;">
+
+                <img
+                    class="kadoshdogs-instagram-preview"
+                    src="<?php echo esc_url($image_url); ?>"
+                    style="
+                        <?php echo $image_url ? '' : 'display:none;'; ?>
+                        width: 160px;
+                        height: 160px;
+                        object-fit: cover;
+                        border-radius: 6px;
+                    "
+                    alt=""
+                >
+
+            </div>
+
+            <input
+                type="hidden"
+                class="kadoshdogs-instagram-image-id"
+                name="kadoshdogs_instagram_<?php echo esc_attr($i); ?>"
+                value="<?php echo esc_attr($image_id); ?>"
+            >
+
+            <button
+                type="button"
+                class="button kadoshdogs-select-image"
+            >
+                Selecionar imagem
+            </button>
+
+            <button
+                type="button"
+                class="button kadoshdogs-remove-image"
+                <?php echo $image_id ? '' : 'style="display:none;"'; ?>
+            >
+                Remover
+            </button>
+
+        </div>
+
+        <?php
+    }
+}
+
+
+function kadoshdogs_save_instagram_images($post_id)
+{
+    if (
+        !isset($_POST['kadoshdogs_instagram_nonce']) ||
+        !wp_verify_nonce(
+            $_POST['kadoshdogs_instagram_nonce'],
+            'kadoshdogs_save_instagram_images'
+        )
+    ) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    for ($i = 1; $i <= 4; $i++) {
+
+        $field = 'kadoshdogs_instagram_' . $i;
+        $meta_key = '_kadoshdogs_instagram_' . $i;
+
+        if (!empty($_POST[$field])) {
+
+            update_post_meta(
+                $post_id,
+                $meta_key,
+                absint($_POST[$field])
+            );
+
+        } else {
+
+            delete_post_meta(
+                $post_id,
+                $meta_key
+            );
+        }
+    }
+}
+
+add_action(
+    'save_post_page',
+    'kadoshdogs_save_instagram_images'
+);
+
+
+/**
+ * Biblioteca de mídia no editor da página
+ */
+function kadoshdogs_instagram_admin_assets($hook)
+{
+    if (
+        $hook !== 'post.php' &&
+        $hook !== 'post-new.php'
+    ) {
+        return;
+    }
+
+    wp_enqueue_media();
+}
+
+add_action(
+    'admin_enqueue_scripts',
+    'kadoshdogs_instagram_admin_assets'
+);
+
+
+/**
+ * JavaScript do seletor de imagens
+ */
+function kadoshdogs_instagram_admin_script()
+{
+    global $pagenow;
+
+    if (
+        $pagenow !== 'post.php' &&
+        $pagenow !== 'post-new.php'
+    ) {
+        return;
+    }
+    ?>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        document.querySelectorAll(
+            '.kadoshdogs-select-image'
+        ).forEach(function (button) {
+
+            button.addEventListener('click', function () {
+
+                const container = button.closest(
+                    '.kadoshdogs-instagram-field'
+                );
+
+                const input = container.querySelector(
+                    '.kadoshdogs-instagram-image-id'
+                );
+
+                const preview = container.querySelector(
+                    '.kadoshdogs-instagram-preview'
+                );
+
+                const removeButton = container.querySelector(
+                    '.kadoshdogs-remove-image'
+                );
+
+                const frame = wp.media({
+                    title: 'Selecionar foto do Instagram',
+                    button: {
+                        text: 'Usar esta imagem'
+                    },
+                    multiple: false
+                });
+
+                frame.on('select', function () {
+
+                    const attachment = frame
+                        .state()
+                        .get('selection')
+                        .first()
+                        .toJSON();
+
+                    input.value = attachment.id;
+
+                    preview.src =
+                        attachment.sizes &&
+                        attachment.sizes.medium
+                            ? attachment.sizes.medium.url
+                            : attachment.url;
+
+                    preview.style.display = 'block';
+                    removeButton.style.display = 'inline-block';
+                });
+
+                frame.open();
+            });
+        });
+
+
+        document.querySelectorAll(
+            '.kadoshdogs-remove-image'
+        ).forEach(function (button) {
+
+            button.addEventListener('click', function () {
+
+                const container = button.closest(
+                    '.kadoshdogs-instagram-field'
+                );
+
+                const input = container.querySelector(
+                    '.kadoshdogs-instagram-image-id'
+                );
+
+                const preview = container.querySelector(
+                    '.kadoshdogs-instagram-preview'
+                );
+
+                input.value = '';
+                preview.src = '';
+                preview.style.display = 'none';
+                button.style.display = 'none';
+            });
+        });
+
+    });
+    </script>
+
+    <?php
+}
+
+add_action(
+    'admin_footer',
+    'kadoshdogs_instagram_admin_script'
+);

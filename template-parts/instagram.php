@@ -1,3 +1,13 @@
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+$page_id = get_queried_object_id();
+
+?>
+
 <section class="instagram-section" id="instagram">
 
     <div class="site-container">
@@ -21,21 +31,57 @@
 
         <div class="instagram-section__grid">
 
-            <div class="instagram-photo">
-                <span>Foto Instagram 1</span>
-            </div>
+            <?php for ($i = 1; $i <= 4; $i++) : ?>
 
-            <div class="instagram-photo">
-                <span>Foto Instagram 2</span>
-            </div>
+                <?php
 
-            <div class="instagram-photo">
-                <span>Foto Instagram 3</span>
-            </div>
+                $image_id = (int) get_post_meta(
+                    $page_id,
+                    '_kadoshdogs_instagram_' . $i,
+                    true
+                );
 
-            <div class="instagram-photo">
-                <span>Foto Instagram 4</span>
-            </div>
+                ?>
+
+                <?php if ($image_id) : ?>
+
+                    <a
+                        class="instagram-photo"
+                        href="https://www.instagram.com/kadoshdogskennel/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver Kadosh Dogs no Instagram"
+                    >
+
+                        <?php
+
+                        echo wp_get_attachment_image(
+                            $image_id,
+                            'large',
+                            false,
+                            [
+                                'loading' => 'lazy',
+                                'alt'     => 'Kadosh Dogs no Instagram',
+                            ]
+                        );
+
+                        ?>
+
+                    </a>
+
+                <?php else : ?>
+
+                    <div class="instagram-photo">
+
+                        <span>
+                            Adicione a foto <?php echo esc_html($i); ?>
+                        </span>
+
+                    </div>
+
+                <?php endif; ?>
+
+            <?php endfor; ?>
 
         </div>
 
