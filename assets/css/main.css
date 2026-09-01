@@ -629,14 +629,14 @@ button:focus-visible {
 .story__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 40px;
     align-items: center;
 }
 
 .story__image {
     width: 100%;
-    max-width: 420px;
-    height: 440px;
+    max-width: 360px;
+    height: 400px;
 
     justify-self: center;
 
