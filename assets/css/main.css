@@ -635,8 +635,10 @@ button:focus-visible {
 
 .story__image {
     width: 100%;
-    height: 520px;
-    min-height: 0;
+    max-width: 420px;
+    height: 440px;
+
+    justify-self: center;
 
     border-radius: var(--radius);
     overflow: hidden;
@@ -647,6 +649,7 @@ button:focus-visible {
 .story__image img {
     width: 100%;
     height: 100%;
+
     display: block;
 
     object-fit: cover;
