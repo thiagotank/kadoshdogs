@@ -11,6 +11,8 @@ if (have_posts()) {
         get_template_part('template-parts/nossos-caes');
         get_template_part('template-parts/nossa-historia');
         get_template_part('template-parts/reserva');
+        get_template_part('template-parts/instagram');
+        get_template_part('template-parts/instagram');
     }
 }
 
