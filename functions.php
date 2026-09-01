@@ -48,11 +48,13 @@ function kadoshdogs_assets()
     $theme_version = wp_get_theme()->get('Version');
 
     // CSS principal
+    $css_file = get_template_directory() . '/assets/css/main.css';
+
     wp_enqueue_style(
         'kadoshdogs-main',
         get_template_directory_uri() . '/assets/css/main.css',
         [],
-        $theme_version
+        file_exists($css_file) ? filemtime($css_file) : $theme_version
     );
 
     // JavaScript principal
