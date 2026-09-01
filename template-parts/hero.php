@@ -1,3 +1,20 @@
+<?php
+
+$page_id = get_queried_object_id();
+
+$hero_image = get_the_post_thumbnail(
+    $page_id,
+    'large',
+    [
+        'loading'       => 'eager',
+        'fetchpriority' => 'high',
+        'alt'           => 'Boston Terrier - Kadosh Dogs',
+        'class'         => 'hero__img',
+    ]
+);
+
+?>
+
 <section class="hero">
 
     <div class="site-container hero__container">
@@ -8,18 +25,9 @@
 
         <div class="hero__image">
 
-            <?php if (has_post_thumbnail()) : ?>
+            <?php if (!empty($hero_image)) : ?>
 
-                <?php
-                the_post_thumbnail(
-                    'large',
-                    [
-                        'loading' => 'eager',
-                        'fetchpriority' => 'high',
-                        'alt' => 'Boston Terrier - Kadosh Dogs',
-                    ]
-                );
-                ?>
+                <?php echo $hero_image; ?>
 
             <?php else : ?>
 
