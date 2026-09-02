@@ -1,4 +1,4 @@
-<section class="story">
+<section class="story" id="nossa-historia">
 
     <div class="site-container story__container">
 

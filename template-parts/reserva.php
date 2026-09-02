@@ -1,4 +1,4 @@
-<section class="reservation" id="reserva">
+<section class="reservation" id="como-funciona">
 
     <div class="site-container">
 
