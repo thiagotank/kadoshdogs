@@ -58,13 +58,15 @@ function kadoshdogs_assets()
     );
 
     // JavaScript principal
-    wp_enqueue_script(
-        'kadoshdogs-main',
-        get_template_directory_uri() . '/assets/js/main.js',
-        [],
-        $theme_version,
-        true
-    );
+        $js_file = get_template_directory() . '/assets/js/main.js';
+
+        wp_enqueue_script(
+    'kadoshdogs-main',
+    get_template_directory_uri() . '/assets/js/main.js',
+    [],
+    file_exists($js_file) ? filemtime($js_file) : $theme_version,
+    true
+);
 }
 
 add_action('wp_enqueue_scripts', 'kadoshdogs_assets');
