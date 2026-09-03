@@ -603,20 +603,49 @@ button:focus-visible {
 
 @media (max-width: 600px) {
 
-.dogs__grid {
-    display: flex;
-    gap: 16px;
+    .dogs__grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 16px;
 
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
+        width: 100%;
 
-    padding: 0 20px 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
 
-    margin-left: -20px;
-    margin-right: -20px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
 
-    scrollbar-width: none;
+        padding: 0 20px 16px;
+
+        margin-left: -20px;
+        margin-right: -20px;
+
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .dogs__grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .dog-card {
+        width: auto;
+        max-width: none;
+
+        flex: 0 0 85%;
+
+        scroll-snap-align: center;
+    }
+
+    .dog-card__image {
+        height: 420px;
+    }
+
+    .dogs {
+        padding: 56px 0;
+    }
+
 }
 
 .dogs__grid::-webkit-scrollbar {
