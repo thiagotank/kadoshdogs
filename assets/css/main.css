@@ -374,10 +374,6 @@ button:focus-visible {
         min-height: 64px;
     }
 
-    .site-nav {
-        display: none;
-    }
-
     .hero__container {
         padding-top: 40px;
         padding-bottom: 48px;
