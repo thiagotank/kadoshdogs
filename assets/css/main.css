@@ -603,12 +603,33 @@ button:focus-visible {
 
 @media (max-width: 600px) {
 
-    .dogs__grid {
-        grid-template-columns: 1fr;
-    }
+.dogs__grid {
+    display: flex;
+    gap: 16px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding: 0 20px 16px;
+
+    margin-left: -20px;
+    margin-right: -20px;
+
+    scrollbar-width: none;
+}
+
+.dogs__grid::-webkit-scrollbar {
+    display: none;
+}
+
+.dog-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+}
 
     .dog-card__image {
-        height: 280px;
+        height: 420px;
     }
 
     .dogs {
