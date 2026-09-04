@@ -48,3 +48,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+/**
+ * Google Ads - Conversão de clique no WhatsApp
+ */
+function gtag_report_conversion(url, target) {
+    let openedWindow = null;
+
+    if (target === '_blank' && url) {
+        openedWindow = window.open('about:blank', '_blank');
+    }
+
+    const callback = function () {
+        if (!url) {
+            return;
+        }
+
+        if (openedWindow) {
+            openedWindow.location = url;
+            return;
+        }
+
+        if (target === '_blank') {
+            window.open(url, '_blank', 'noopener,noreferrer');
+            return;
+        }
+
+        window.location.href = url;
+    };
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+            send_to: 'AW-726135474/y2vKCMOghekcELLln9oC',
+            event_callback: callback
+        });
+
+        setTimeout(callback, 1000);
+        return;
+    }
+
+    callback();
+}
+
+/**
+ * Captura todos os links de WhatsApp do site.
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    const whatsappLinks = document.querySelectorAll(
+        'a[href*="wa.me"], a[href*="whatsapp.com"]'
+    );
+
+    whatsappLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const url = this.href;
+            const target = this.getAttribute('target');
+
+            gtag_report_conversion(url, target);
+        });
+    });
+});
