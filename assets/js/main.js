@@ -52,9 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
  * Google Ads - Conversão de clique no WhatsApp
  */
-/**
- * Google Ads - Conversão de clique no WhatsApp
- */
 function gtag_report_conversion(url) {
     if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
