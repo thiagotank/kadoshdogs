@@ -3,7 +3,7 @@
     <div class="site-container story__container">
 
         <img
-           src="https://indigo-ostrich-593851.hostingersite.com/wp-content/uploads/2026/09/WhatsApp-Image-2023-04-23-at-21.18.38-3.jpeg"
+           src="https://kadoshdogs.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2023-04-23-at-21.18.38-4.jpeg"
              alt="Kadosh Dogs - Nossa História"
              loading="lazy"
         >
