@@ -1,0 +1,41 @@
+name: Deploy Kadosh Dogs Theme
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare theme release
+        run: |
+          mkdir -p release
+
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='release' \
+            --exclude='README.md' \
+            ./ release/
+
+          echo "Arquivos preparados:"
+          find release -maxdepth 2 -type f | sort
+
+      - name: Deploy theme to Hostinger
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: ${{ secrets.HOSTINGER_USER }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          port: ${{ secrets.HOSTINGER_PORT }}
+          source: "release/*"
+          target: "/home/${{ secrets.HOSTINGER_USER }}/domains/kadoshdogs.com.br/public_html/wp-content/themes/kadoshdogs"
+          strip_components: 1
+          overwrite: true
