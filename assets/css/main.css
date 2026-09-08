@@ -1066,7 +1066,7 @@ button:focus-visible {
 @media (max-width: 600px) {
     .whatsapp-float {
         right: 16px;
-        bottom: 16px;
+        bottom: 84px;
 
         width: 52px;
         height: 52px;
@@ -1284,19 +1284,20 @@ button:focus-visible {
     /* Rodapé final */
     .site-footer__bottom {
         min-height: auto;
-        padding: 18px 0;
+        padding: 18px 0 24px;
 
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
 
-        gap: 12px;
+        gap: 5px;
 
         font-size: 10px;
+        text-align: center;
     }
 
     .site-footer__signature {
-        text-align: right;
+        text-align: center;
     }
 }
 
