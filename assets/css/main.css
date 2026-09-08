@@ -1232,30 +1232,71 @@ button:focus-visible {
 @media (max-width: 600px) {
 
     .site-footer {
-        padding-top: 48px;
+        padding-top: 32px;
     }
 
     .site-footer__grid {
-        grid-template-columns: 1fr;
-
-        gap: 36px;
-
-        padding-bottom: 40px;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 20px;
+        padding-bottom: 28px;
     }
 
+    /* Marca ocupa toda a primeira linha */
     .site-footer__brand {
-        grid-column: auto;
+        grid-column: 1 / -1;
+        max-width: 100%;
     }
 
+    .site-footer__logo {
+        font-size: 21px;
+        margin-bottom: 2px;
+    }
+
+    .site-footer__breed {
+        margin-bottom: 16px;
+        font-size: 10px;
+    }
+
+    .site-footer__description {
+        margin-bottom: 12px;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .site-footer__location {
+        font-size: 13px;
+    }
+
+    /* Navegação e contato lado a lado */
+    .site-footer__title {
+        margin-bottom: 14px;
+        font-size: 12px;
+    }
+
+    .site-footer__menu li {
+        margin-bottom: 9px;
+    }
+
+    .site-footer__menu a {
+        font-size: 13px;
+    }
+
+    /* Rodapé final */
     .site-footer__bottom {
         min-height: auto;
+        padding: 18px 0;
 
-        padding: 24px 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 
-        flex-direction: column;
-        align-items: flex-start;
+        gap: 12px;
 
-        gap: 8px;
+        font-size: 10px;
+    }
+
+    .site-footer__signature {
+        text-align: right;
     }
 }
 
